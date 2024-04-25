@@ -1,0 +1,4 @@
+/nginx/certificate.csr
+/nginx/certificate.pem
+/nginx/private.key
+/node_modules/

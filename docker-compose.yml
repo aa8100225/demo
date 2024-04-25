@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DATABASE_PASSWORD}
+      MYSQL_DATABASE: ${DATABASE_NAME}
+      MYSQL_USER: ${DATABASE_USER}
+      MYSQL_PASSWORD: ${DATABASE_PASSWORD}
+    ports:
+      - "3306:3306"
+    # volumes:
+    #   - mysql-data:/var/lib/mysql # do not amout
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile    
+    environment:
+      DATABASE_HOST: mysql
+      DATABASE_USER: ${DATABASE_USER}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      DATABASE_NAME: ${DATABASE_NAME}
+      JWT_SECRET_KEY: ${JWT_SECRET_KEY}
+      NODE_ENV: ${NODE_ENV}
+      CORS_ORIGIN: ${CORS_ORIGIN}
+    depends_on:
+      - mysql
+    ports:
+      - "${BACKEND_PORT}:3000"
+
+  frontend:
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL}
+    environment:
+      NODE_ENV: ${NODE_ENV}
+      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL}
+    depends_on:
+      - backend
+    ports:
+      - "${FRONTEND_PORT}:4000"
+
+  nginx:
+    build:
+      context: ./nginx
+    ports:
+      - "80:80"
+      # - "443:443"
+    depends_on:
+      - backend
+      - frontend
+
+# volumes:
+  # mysql-data:
