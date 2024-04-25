@@ -4,10 +4,10 @@
 This project is a full-stack CRUD application demo using the Next.js framework for the frontend, NestJS framework for the backend, and MySQL as the database. The entire application is containerized with Docker and utilizes Nginx as a reverse proxy server. This project primarily demonstrates basic functionalities such as user registration, login, and product management.
 
 <div>
-<img src="assets/img/demo1.png" alt="demoImage" style="max-width: 40%; height: 50%;"/>
-<img src="assets/img/demo2.png" alt="demoImage" style="max-width: 40%; height: 50%;"/>
-<img src="assets/img/demo4.png" alt="demoImage" style="max-width: 40%; height: 50%;"/>
-<img src="assets/img/demo7.png" alt="demoImage" style="max-width: 40%; height: 50%;"/>
+<img src="assets/img/demo1.png" alt="demoImage" style="width: 40%; height: 50%;"/>
+<img src="assets/img/demo2.png" alt="demoImage" style="width: 40%; height: 50%;"/>
+<img src="assets/img/demo4.png" alt="demoImage" style="width: 40%; height: 50%;"/>
+<img src="assets/img/demo7.png" alt="demoImage" style="width: 40%; height: 50%;"/>
 </div>
 
 
